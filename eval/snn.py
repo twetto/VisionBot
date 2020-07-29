@@ -5,10 +5,10 @@ import iqif
 class SNN:
     def __init__(self, useIzModel=False, thread=1):
         if useIzModel:
-            self.network = iqif.iznet()
+            self.network = iqif.iznet("iq-neuron/inputs/neuronParameter_Izhikevich.txt","Connection_Table_Izhikevich.txt")
             self.numNeurons = self.network.num_neurons()
         else:
-            self.network = iqif.iqnet()
+            self.network = iqif.iqnet("iq-neuron/inputs/neuronParameter_IQIF.txt","Connection_Table_IQIF.txt")
             self.network.set_num_threads(thread)
             self.numNeurons = self.network.num_neurons()
 
