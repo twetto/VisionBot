@@ -52,9 +52,12 @@ class VideoPreprocessor:
 
 class Algorithm:
 
+    def __init__(self):
+        self.dis = cv2.DISOpticalFlow_create(0)
+
     def calculateOpticalFlow(self, previousFrame, currentFrame):
-        flow = cv2.calcOpticalFlowFarneback(previousFrame, currentFrame, None, 0.5, 8, 15, 3, 5, 1.2, 0)
-        #flow = cv2.calcOpticalFlowFarneback(previousFrame, currentFrame, None, 0.5, 3, 3, 3, 3, 3, 0)
+        #flow = cv2.calcOpticalFlowFarneback(previousFrame, currentFrame, None, 0.5, 8, 15, 3, 5, 1.2, 0)
+        flow = self.dis.calc(previousFrame, currentFrame, None, )
         return flow
 
     def contrastEnhance(self, frame):
